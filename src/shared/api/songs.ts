@@ -67,5 +67,23 @@ export const SongsApi = {
             console.error('SongsApi.upload error:', error);
             throw error;
         }
+    },
+
+    addFavorite: async (id: string): Promise<void> => {
+        try {
+            await apiClient.post(API_CONFIG.ENDPOINTS.SONGS.ADD_FAVORITE(id));
+        } catch (error) {
+            console.error('SongsApi.addFavorite error:', error);
+            throw error;
+        }
+    },
+
+    removeFavorite: async (id: string): Promise<void> => {
+        try {
+            await apiClient.post(API_CONFIG.ENDPOINTS.SONGS.REMOVE_FAVORITE(id));
+        } catch (error) {
+            console.error('SongsApi.removeFavorite error:', error);
+            throw error;
+        }
     }
 };

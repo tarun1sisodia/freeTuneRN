@@ -5,10 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
 import { AppColors } from '../../../shared/theme/app_colors';
+import { useFavorites } from '../../library/hooks/useFavorites';
 
 export const PlayerScreen = () => {
     const navigation = useNavigation();
     const { currentTrack, isPlaying, position, duration, pause, resume, skipToNext, skipToPrevious, seekTo } = usePlayer();
+    const { isFavorite, toggleFavorite } = useFavorites();
 
     const formatTime = (seconds: number) => {
         const mins = Math.floor(seconds / 60);
@@ -59,8 +61,12 @@ export const PlayerScreen = () => {
                             {currentTrack.artist}
                         </Text>
                     </View>
-                    <TouchableOpacity>
-                        <Icon name="heart-outline" size={28} color="white" />
+                    <TouchableOpacity onPress={() => currentTrack.id && toggleFavorite(currentTrack.id)}>
+                        <Icon
+                            name={currentTrack.id && isFavorite(currentTrack.id) ? "heart" : "heart-outline"}
+                            size={28}
+                            color={currentTrack.id && isFavorite(currentTrack.id) ? AppColors.primary : "white"}
+                        />
                     </TouchableOpacity>
                 </View>
             </View>

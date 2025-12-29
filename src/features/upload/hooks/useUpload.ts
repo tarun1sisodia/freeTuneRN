@@ -56,7 +56,7 @@ export const useUpload = () => {
             formData.append('album', album);
 
             // Append song file
-            formData.append('song', {
+            formData.append('audio', {
                 uri: selectedSong.uri,
                 type: selectedSong.type,
                 name: selectedSong.name,
@@ -64,7 +64,7 @@ export const useUpload = () => {
 
             // Append image file if selected
             if (selectedImage) {
-                formData.append('thumbnail', { // Assuming backend expects 'thumbnail' or 'cover'
+                formData.append('image', {
                     uri: selectedImage.uri,
                     type: selectedImage.type,
                     name: selectedImage.name,

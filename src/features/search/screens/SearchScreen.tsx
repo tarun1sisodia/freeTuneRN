@@ -13,8 +13,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSearch } from '../hooks/useSearch';
 import { usePlayerStore } from '../../player/store';
+import { useAuthStore } from '../../auth/store';
 import { AppColors } from '../../../shared/theme/app_colors';
 import { useNavigation } from '@react-navigation/native';
+import { API_CONFIG } from '../../../shared/constants/config';
 
 const BrowseCategory = ({ title, color }: { title: string; color: string }) => (
     <View
@@ -53,19 +55,21 @@ const SongListItem = ({ song, onPress }: { song: any; onPress: (song: any) => vo
 export const SearchScreen = () => {
     const { query, searchResults, isLoading, setQuery } = useSearch();
     const { playTrack } = usePlayerStore();
+    const token = useAuthStore((state) => state.token);
     // const navigation = useNavigation(); // If we need to navigate explicity
 
     const handleSongPress = async (song: any) => {
-        // Map API response to Track Player track object if necessary
-        // Assuming song object from API is close enough or usePlayerStore handles it.
-        // We might need to adapt the object here.
+        const id = song.song_id || song.id || song._id;
+        const url = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.SONGS.STREAM(id)}`;
+
         await playTrack({
-            id: song.song_id || song.id,
-            url: song.stream_url || '', // We likely need to fetch the stream URL or constructing it
+            id: id,
+            url: url,
             title: song.title,
             artist: song.artist,
-            artwork: song.album_art_url,
-            duration: song.duration_ms ? song.duration_ms / 1000 : 0
+            artwork: song.album_art_url || song.artwork || 'https://via.placeholder.com/150',
+            duration: song.duration_ms ? song.duration_ms / 1000 : 0,
+            headers: token ? { Authorization: `Bearer ${token}` } : undefined,
         });
         // Optionally navigate to Player? The global player usually stays visible or opens up.
     };

@@ -11,10 +11,13 @@ import {
     Modal
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useLibrary } from '../hooks/useLibrary';
 import { AppColors } from '../../../shared/theme/app_colors';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { useLibrary } from '../hooks/useLibrary';
+import { usePlayerStore } from '../../player/store';
+import { useAuthStore } from '../../auth/store';
+import { API_CONFIG } from '../../../shared/constants/config';
 
 const TabButton = ({ title, isActive, onPress }: { title: string, isActive: boolean, onPress: () => void }) => (
     <TouchableOpacity
@@ -80,6 +83,8 @@ const SongListItem = ({ song, onPress }: { song: any, onPress: () => void }) => 
 export const LibraryScreen = () => {
     const { playlists, likedSongs, uploadedSongs, createPlaylist, deletePlaylist } = useLibrary();
     const navigation = useNavigation();
+    const { playTrack } = usePlayerStore();
+    const token = useAuthStore((state) => state.token);
     const [activeTab, setActiveTab] = useState<'Playlists' | 'My Songs'>('Playlists');
     const [isCreateModalVisible, setCreateModalVisible] = useState(false);
     const [newPlaylistName, setNewPlaylistName] = useState('');
@@ -126,11 +131,26 @@ export const LibraryScreen = () => {
         </View>
     );
 
+    const handlePlaySong = async (song: any) => {
+        const id = song.song_id || song.id || song._id;
+        const url = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.SONGS.STREAM(id)}`;
+
+        await playTrack({
+            id: id,
+            url: url,
+            title: song.title,
+            artist: song.artist,
+            artwork: song.album_art_url || song.artwork || 'https://via.placeholder.com/150',
+            duration: song.duration_ms ? song.duration_ms / 1000 : 0,
+            headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+        });
+    };
+
     const renderMySongs = () => (
         <FlatList
             data={uploadedSongs}
             keyExtractor={(item) => item.id || item.song_id}
-            renderItem={({ item }) => <SongListItem song={item} onPress={() => { /* Play */ }} />}
+            renderItem={({ item }) => <SongListItem song={item} onPress={() => handlePlaySong(item)} />}
             ListEmptyComponent={
                 <View className="items-center justify-center py-20">
                     <Text className="text-gray-400 text-lg">No songs uploaded yet</Text>
