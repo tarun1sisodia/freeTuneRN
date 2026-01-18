@@ -173,6 +173,7 @@ export const LibraryScreen = () => {
                         isActive={activeTab === 'My Songs'}
                         onPress={() => setActiveTab('My Songs')}
                     />
+
                     <TabButton
                         title="Downloads"
                         isActive={activeTab === 'Downloads'}
