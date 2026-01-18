@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, ActivityIndicator, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useUpload } from '../hooks/useUpload';
-import { AppColors } from '../../../shared/theme/app_colors';
-import { BasicAppBar } from '../../../shared/components/BasicAppBar';
-import { BasicAppButton } from '../../../shared/components/BasicAppButton';
+import { AppColors } from '../../../app/theme/app_colors';
+import { BasicAppBar } from '../../../components/BasicAppBar';
+import { BasicAppButton } from '../../../components/BasicAppButton';
 
 const InputField = ({
     value,

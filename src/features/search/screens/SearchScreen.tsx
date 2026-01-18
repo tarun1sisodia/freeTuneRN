@@ -12,11 +12,11 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSearch } from '../hooks/useSearch';
-import { usePlayerStore } from '../../player/store';
-import { useAuthStore } from '../../auth/store';
-import { AppColors } from '../../../shared/theme/app_colors';
+import { usePlayerStore } from '../../../store/usePlayerStore';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { AppColors } from '../../../app/theme/app_colors';
 import { useNavigation } from '@react-navigation/native';
-import { API_CONFIG } from '../../../shared/constants/config';
+import { API_CONFIG } from '../../../utils/constants/config';
 
 const BrowseCategory = ({ title, color }: { title: string; color: string }) => (
     <View

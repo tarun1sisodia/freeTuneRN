@@ -4,11 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { useAuthStore } from '../../auth/store';
-import { usePlayer } from '../hooks/usePlayer';
-import { RecentlyPlayedCard } from '../../../shared/components/RecentlyPlayedCard';
-import { SongsApi } from '../../../shared/api/songs';
-import { API_CONFIG } from '../../../shared/constants/config';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { usePlayer } from '../../player/hooks/usePlayer';
+import { RecentlyPlayedCard } from '../../../components/RecentlyPlayedCard';
+import { SongsApi } from '../../../services/api/songs';
+import { API_CONFIG } from '../../../utils/constants/config';
 
 export const HomeScreen = () => {
     const user = useAuthStore((state) => state.user);

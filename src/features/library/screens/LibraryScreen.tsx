@@ -11,13 +11,13 @@ import {
     Modal
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { AppColors } from '../../../shared/theme/app_colors';
+import { AppColors } from '../../../app/theme/app_colors';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { useLibrary } from '../hooks/useLibrary';
-import { usePlayerStore } from '../../player/store';
-import { useAuthStore } from '../../auth/store';
-import { API_CONFIG } from '../../../shared/constants/config';
+import { usePlayerStore } from '../../../store/usePlayerStore';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { API_CONFIG } from '../../../utils/constants/config';
 
 const TabButton = ({ title, isActive, onPress }: { title: string, isActive: boolean, onPress: () => void }) => (
     <TouchableOpacity

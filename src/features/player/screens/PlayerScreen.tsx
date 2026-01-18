@@ -4,7 +4,7 @@ import { usePlayer } from '../hooks/usePlayer';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
-import { AppColors } from '../../../shared/theme/app_colors';
+import { AppColors } from '../../../app/theme/app_colors';
 import { useFavorites } from '../../library/hooks/useFavorites';
 
 export const PlayerScreen = () => {

@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { SongsApi } from '../../../shared/api/songs';
+import { SongsApi } from '../../../services/api/songs';
 // Use the raw shape for now as we might handle mapping differently
 // or import Song from '../../../data/models/Song';
 
@@ -18,7 +18,7 @@ export const useSearch = (): UseSearchResult => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const debounceTimer = useRef<NodeJS.Timeout | null>(null);
+    const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const search = async (text: string) => {
         if (!text.trim()) {

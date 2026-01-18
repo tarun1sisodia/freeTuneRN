@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MainTabNavigator } from './MainTabNavigator';
-import { ProfileScreen } from '../features/profile/screens/ProfileScreen';
-import { UploadScreen } from '../features/upload/screens/UploadScreen';
+import { ProfileScreen } from '../../features/profile/screens/ProfileScreen';
+import { UploadScreen } from '../../features/upload/screens/UploadScreen';
 
 const Stack = createNativeStackNavigator();
 

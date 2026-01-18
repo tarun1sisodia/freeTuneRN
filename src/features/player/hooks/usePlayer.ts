@@ -1,4 +1,4 @@
-import { usePlayerStore } from '../store';
+import { usePlayerStore } from '../../../store/usePlayerStore';
 import TrackPlayer, { useProgress } from 'react-native-track-player';
 
 export const usePlayer = () => {

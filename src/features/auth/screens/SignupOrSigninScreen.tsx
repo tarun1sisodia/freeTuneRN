@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BasicAppButton } from '../../../shared/components/BasicAppButton';
-import { BasicAppBar } from '../../../shared/components/BasicAppBar';
+import { BasicAppButton } from '../../../components/BasicAppButton';
+import { BasicAppBar } from '../../../components/BasicAppBar';
 // import { AppImages } from '../../../assets/images'; // Placeholder
 
 export const SignupOrSigninScreen = () => {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen } from '../features/player/screens/HomeScreen';
-import { PlayerScreen } from '../features/player/screens/PlayerScreen';
-import { SearchScreen } from '../features/search/screens/SearchScreen';
-import { LibraryScreen } from '../features/library/screens/LibraryScreen';
+import { HomeScreen } from '../../features/home/screens/HomeScreen';
+import { PlayerScreen } from '../../features/player/screens/PlayerScreen';
+import { SearchScreen } from '../../features/search/screens/SearchScreen';
+import { LibraryScreen } from '../../features/library/screens/LibraryScreen';
 import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AppColors } from '../shared/theme/app_colors';
+import { AppColors } from '../../app/theme/app_colors';
 
 const Tab = createBottomTabNavigator();
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BasicAppBar } from '../../../shared/components/BasicAppBar';
-import { BasicAppButton } from '../../../shared/components/BasicAppButton';
+import { BasicAppBar } from '../../../components/BasicAppBar';
+import { BasicAppButton } from '../../../components/BasicAppButton';
 import { useAuth } from '../hooks/useAuth';
 
 export const RegisterScreen = () => {

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { SongsApi } from '../../../shared/api/songs';
+import { SongsApi } from '../../../services/api/songs';
 import { Alert } from 'react-native';
 
 export const useFavorites = () => {

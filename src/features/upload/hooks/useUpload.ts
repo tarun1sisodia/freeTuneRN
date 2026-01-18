@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Alert } from 'react-native';
 import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
-import { SongsApi } from '../../../shared/api/songs';
+import { SongsApi } from '../../../services/api/songs';
 import { useNavigation } from '@react-navigation/native';
 
 export const useUpload = () => {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { PlaylistsApi } from '../../../shared/api/playlists';
-import { SongsApi } from '../../../shared/api/songs';
+import { PlaylistsApi } from '../../../services/api/playlists';
+import { SongsApi } from '../../../services/api/songs';
 import { useFocusEffect } from '@react-navigation/native';
 
 export const useLibrary = () => {

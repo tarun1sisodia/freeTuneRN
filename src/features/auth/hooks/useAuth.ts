@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useAuthStore } from '../store';
-import { apiClient } from '../../../shared/api/client';
-import { API_CONFIG } from '../../../shared/constants/config';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { apiClient } from '../../../services/api/client';
+import { API_CONFIG } from '../../../utils/constants/config';
 import { Alert } from 'react-native';
 
 export const useAuth = () => {

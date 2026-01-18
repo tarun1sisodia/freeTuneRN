@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView, Switch } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useProfile } from '../hooks/useProfile';
-import { AppColors } from '../../../shared/theme/app_colors';
-import { BasicAppBar } from '../../../shared/components/BasicAppBar';
+import { AppColors } from '../../../app/theme/app_colors';
+import { BasicAppBar } from '../../../components/BasicAppBar';
 
 const StatItem = ({ label, value }: { label: string; value: string | number }) => (
     <View className="items-center">
