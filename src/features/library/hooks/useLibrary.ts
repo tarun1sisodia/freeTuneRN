@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { PlaylistsApi } from '../../../services/api/playlists';
 import { SongsApi } from '../../../services/api/songs';
+import { SongRepository } from '../../../services/database/repositories/SongRepository';
 import { useFocusEffect } from '@react-navigation/native';
 
 export const useLibrary = () => {
     const [playlists, setPlaylists] = useState<any[]>([]);
     const [likedSongs, setLikedSongs] = useState<any[]>([]);
     const [uploadedSongs, setUploadedSongs] = useState<any[]>([]);
+    const [downloadedSongs, setDownloadedSongs] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -14,14 +16,16 @@ export const useLibrary = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const [fetchedPlaylists, fetchedLiked, fetchedUploaded] = await Promise.all([
+            const [fetchedPlaylists, fetchedLiked, fetchedUploaded, fetchedDownloaded] = await Promise.all([
                 PlaylistsApi.getUserPlaylists(),
                 PlaylistsApi.getLikedSongs(),
                 SongsApi.getMySongs(),
+                SongRepository.getAllDownloadedSongs(),
             ]);
             setPlaylists(fetchedPlaylists);
             setLikedSongs(fetchedLiked);
             setUploadedSongs(fetchedUploaded);
+            setDownloadedSongs(fetchedDownloaded);
         } catch (err) {
             console.error('Failed to fetch library data', err);
             setError('Failed to load library');
@@ -61,6 +65,7 @@ export const useLibrary = () => {
         playlists,
         likedSongs,
         uploadedSongs,
+        downloadedSongs,
         isLoading,
         error,
         createPlaylist,

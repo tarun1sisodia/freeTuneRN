@@ -81,11 +81,11 @@ const SongListItem = ({ song, onPress }: { song: any, onPress: () => void }) => 
 );
 
 export const LibraryScreen = () => {
-    const { playlists, likedSongs, uploadedSongs, createPlaylist, deletePlaylist } = useLibrary();
+    const { playlists, likedSongs, uploadedSongs, downloadedSongs, createPlaylist, deletePlaylist } = useLibrary();
     const navigation = useNavigation();
     const { playTrack } = usePlayerStore();
     const token = useAuthStore((state) => state.token);
-    const [activeTab, setActiveTab] = useState<'Playlists' | 'My Songs'>('Playlists');
+    const [activeTab, setActiveTab] = useState<'Playlists' | 'My Songs' | 'Downloads'>('Playlists');
     const [isCreateModalVisible, setCreateModalVisible] = useState(false);
     const [newPlaylistName, setNewPlaylistName] = useState('');
 
@@ -172,6 +172,16 @@ export const LibraryScreen = () => {
                         title="My Songs"
                         isActive={activeTab === 'My Songs'}
                         onPress={() => setActiveTab('My Songs')}
+                    />
+                    <TabButton
+                        title="Downloads"
+                        isActive={activeTab === 'Downloads'}
+                        onPress={() => setActiveTab('Downloads')}
+                    />
+                    <TabButton
+                        title="Downloads"
+                        isActive={activeTab === 'Downloads'}
+                        onPress={() => setActiveTab('Downloads')}
                     />
                 </View>
                 <TouchableOpacity onPress={() => {

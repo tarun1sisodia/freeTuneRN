@@ -29,6 +29,8 @@ const BrowseCategory = ({ title, color }: { title: string; color: string }) => (
     </View>
 );
 
+import { DownloadButton } from '../../../components/DownloadButton';
+
 const SongListItem = ({ song, onPress }: { song: any; onPress: (song: any) => void }) => {
     return (
         <TouchableOpacity
@@ -47,7 +49,12 @@ const SongListItem = ({ song, onPress }: { song: any; onPress: (song: any) => vo
                     {song.artist}
                 </Text>
             </View>
-            <Icon name="more-vert" size={24} color="#9ca3af" />
+            <View className="flex-row items-center">
+                <DownloadButton song={song} />
+                <TouchableOpacity className="ml-4">
+                    <Icon name="more-vert" size={24} color="#9ca3af" />
+                </TouchableOpacity>
+            </View>
         </TouchableOpacity>
     );
 };
